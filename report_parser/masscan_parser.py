@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import json.decoder
 from json import load as json_load
 from os import remove, rename
@@ -85,6 +86,8 @@ class MasScanReportParser:
 testclass = MasScanReportParser(report_path="..\\test\\test.json")
 testclass.get_json_clear_report()
 =======
+=======
+>>>>>>> e84983d (approximate project structure)
 import json.decoder
 from json import load as json_load
 from os import remove, rename
@@ -99,7 +102,11 @@ class MasScanReportParser:
     def check_format_report_file(self):
         pass
 
+<<<<<<< HEAD
     def __json_parser(self) -> list:
+=======
+    def __json_parser(self) -> dict:
+>>>>>>> e84983d (approximate project structure)
         try:
             with open(file=self.__report_file_path, mode="r", encoding="UTF-8", errors="ignore") as json_file:
                 return json_load(json_file)
@@ -143,16 +150,24 @@ class MasScanReportParser:
                 all_ip.append(ip.get(user_value))
         return all_ip
 
+<<<<<<< HEAD
     def json_get_all_ip(self) -> list:
         return self.__json_get_value(user_value="ip")
 
     def json_get_all_port(self) -> list:
+=======
+    def json_get_ip(self) -> list:
+        return self.__json_get_value(user_value="ip")
+
+    def json_get_port(self) -> list:
+>>>>>>> e84983d (approximate project structure)
         all_port_info: list = self.__json_get_value(user_value="ports")
         all_port: list = []
         for port in all_port_info:
             all_port.append(port[0].get("port"))
         return all_port
 
+<<<<<<< HEAD
     def get_json_clear_report(self) -> dict:
         is_result: dict = {}
         masscan_result = self.__json_parser()
@@ -176,3 +191,12 @@ print(testclass.json_get_port())
 =======
 testclass.get_json_clear_report()
 >>>>>>> fbb3243 (need go home)
+=======
+    def get_json_clear_report(self):
+        pass
+
+
+testclass = MasScanReportParser(report_path="..\\test\\test.json")
+print(testclass.json_get_ip())
+print(testclass.json_get_port())
+>>>>>>> e84983d (approximate project structure)
