@@ -9,7 +9,7 @@ class MasScanReportParser:
         self.__report_file_path: str = report_path
         self.__tmp_dir: str = "..\\test\\"
 
-    def check_format_report_file(self):
+    def __check_format_report_file(self):
         pass
 
     def __json_parser(self) -> list:
@@ -66,7 +66,7 @@ class MasScanReportParser:
             all_port.append(port[0].get("port"))
         return all_port
 
-    def get_json_clear_report(self) -> dict:
+    def json_get_clear_report(self) -> dict:
         is_result: dict = {}
         masscan_result = self.__json_parser()
 
@@ -80,4 +80,4 @@ class MasScanReportParser:
 
 
 test_class = MasScanReportParser(report_path="..\\test\\test.json")
-test_class.get_json_clear_report()
+test_class.json_get_clear_report()
