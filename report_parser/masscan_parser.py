@@ -183,17 +183,14 @@ class MasScanReportParser:
 =======
 >>>>>>> fbb3243 (need go home)
     def get_json_clear_report(self) -> dict:
-        is_result: dict = {}
         masscan_result = self.__json_parser()
+        is_result: dict = {}
+        for item in masscan_result:
+            item: dict
+            if not is_result.get(item.get('ip')):
+                is_result[item.get('ip')]: list = [ports_item['port'] for ports_item in item.get('ports')]
+            is_result[item.get('ip')] += [ports_item['port'] for ports_item in item.get('ports')]
 
-        for i in masscan_result:
-            is_result.update({i.get("ip"): [x.get("port") for k in masscan_result for x in k.get("ports")]})
-
-
-
-
-
-        print(is_result)
         return is_result
 <<<<<<< HEAD
 
@@ -219,5 +216,9 @@ print(testclass.json_get_port())
 
 
 testclass = MasScanReportParser(report_path="..\\test\\test.json")
+<<<<<<< HEAD
 testclass.get_json_clear_report()
 >>>>>>> fbb3243 (need go home)
+=======
+print(testclass.get_json_clear_report())
+>>>>>>> 2ff17ca (fix masscan clear result)
