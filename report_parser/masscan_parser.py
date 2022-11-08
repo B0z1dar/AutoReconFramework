@@ -103,10 +103,14 @@ class MasScanReportParser:
         pass
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __json_parser(self) -> list:
 =======
     def __json_parser(self) -> dict:
 >>>>>>> e84983d (approximate project structure)
+=======
+    def __json_parser(self) -> list:
+>>>>>>> fbb3243 (need go home)
         try:
             with open(file=self.__report_file_path, mode="r", encoding="UTF-8", errors="ignore") as json_file:
                 return json_load(json_file)
@@ -151,6 +155,7 @@ class MasScanReportParser:
         return all_ip
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def json_get_all_ip(self) -> list:
         return self.__json_get_value(user_value="ip")
 
@@ -161,6 +166,12 @@ class MasScanReportParser:
 
     def json_get_port(self) -> list:
 >>>>>>> e84983d (approximate project structure)
+=======
+    def json_get_all_ip(self) -> list:
+        return self.__json_get_value(user_value="ip")
+
+    def json_get_all_port(self) -> list:
+>>>>>>> fbb3243 (need go home)
         all_port_info: list = self.__json_get_value(user_value="ports")
         all_port: list = []
         for port in all_port_info:
@@ -168,6 +179,9 @@ class MasScanReportParser:
         return all_port
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fbb3243 (need go home)
     def get_json_clear_report(self) -> dict:
         is_result: dict = {}
         masscan_result = self.__json_parser()
@@ -181,6 +195,7 @@ class MasScanReportParser:
 
         print(is_result)
         return is_result
+<<<<<<< HEAD
 
 
 testclass = MasScanReportParser(report_path="..\\test\\test.json")
@@ -200,3 +215,9 @@ testclass = MasScanReportParser(report_path="..\\test\\test.json")
 print(testclass.json_get_ip())
 print(testclass.json_get_port())
 >>>>>>> e84983d (approximate project structure)
+=======
+
+
+testclass = MasScanReportParser(report_path="..\\test\\test.json")
+testclass.get_json_clear_report()
+>>>>>>> fbb3243 (need go home)
