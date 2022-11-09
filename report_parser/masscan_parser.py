@@ -66,18 +66,16 @@ class MasScanReportParser:
             all_port.append(port[0].get("port"))
         return all_port
 
-    def json_get_clear_report(self) -> dict:
-        is_result: dict = {}
+    def json_get_clear_report(self) -> list:
+        result_dict: dict = {}
         masscan_result = self.__json_parser()
 
         for item in masscan_result:
             item: dict
-            if not is_result.get(item.get('ip')):
-                is_result[item.get('ip')]: list = [ports_item['port'] for ports_item in item.get('ports')]
-            is_result[item.get('ip')] += [ports_item['port'] for ports_item in item.get('ports')]
+            if not result_dict.get(item.get('ip')):
+                result_dict[item.get('ip')]: list = [ports_item['port'] for ports_item in item.get('ports')]
+                continue
+            result_dict[item.get('ip')] += [ports_item['port'] for ports_item in item.get('ports')]
 
+        is_result = [{'ip': key, 'ports': value} for key, value in result_dict.items()]
         return is_result
-
-
-test_class = MasScanReportParser(report_path="..\\test\\test.json")
-test_class.json_get_clear_report()
