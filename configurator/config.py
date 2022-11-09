@@ -17,3 +17,11 @@ class MasScanConfig:
 
     def get_targets(self):
         pass
+
+
+class NmapConfig:
+    def __init__(self):
+        pass
+
+    def set_cve_db(self):
+        pass

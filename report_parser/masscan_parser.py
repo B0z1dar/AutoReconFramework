@@ -7,7 +7,7 @@ from random import randrange
 class MasScanReportParser:
     def __init__(self, report_path: str):
         self.__report_file_path: str = report_path
-        self.__tmp_dir: str = "..\\test\\"
+        self.__tmp_dir: str = ""
 
     def __check_format_report_file(self):
         pass
@@ -67,15 +67,15 @@ class MasScanReportParser:
         return all_port
 
     def json_get_clear_report(self) -> list:
-        result_dict: dict = {}
+        result_temp_dict: dict = {}
         masscan_result = self.__json_parser()
 
         for item in masscan_result:
             item: dict
-            if not result_dict.get(item.get('ip')):
-                result_dict[item.get('ip')]: list = [ports_item['port'] for ports_item in item.get('ports')]
+            if not result_temp_dict.get(item.get('ip')):
+                result_temp_dict[item.get('ip')]: list = [ports_item['port'] for ports_item in item.get('ports')]
                 continue
-            result_dict[item.get('ip')] += [ports_item['port'] for ports_item in item.get('ports')]
+            result_temp_dict[item.get('ip')] += [ports_item['port'] for ports_item in item.get('ports')]
 
-        is_result = [{'ip': key, 'ports': value} for key, value in result_dict.items()]
+        is_result = [{'ip': key, 'ports': value} for key, value in result_temp_dict.items()]
         return is_result

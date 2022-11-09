@@ -39,6 +39,7 @@ for i in find_target:
     i: dict
     target: str = i.get('ip')
     ports: str = ','.join([str(i) for i in i.get('ports')])
+    print(f"sc")
     new_scan_nmap.test_vuln_scan_func(target=target, ports=ports)
 
 

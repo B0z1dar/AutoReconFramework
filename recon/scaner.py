@@ -16,6 +16,7 @@ class NmapStartScan:
     def __init__(self):
         pass
 
-    def test_vuln_scan_func(self, target: str, ports: str):
-        system(f"nmap -sV --script vulscan {target} -p {ports} -Pn")
+    @staticmethod
+    def test_vuln_scan_func(target: str, ports: str):
+        system(f"nmap -sV -p {ports} --script vulscan,vuln,vulners --script-args vulscandb=cve.csv {target}")
 
