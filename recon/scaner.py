@@ -14,9 +14,9 @@ class MasScanStarter:
 
 class NmapStartScan:
     def __init__(self):
-        pass
+        self.vuln_date_base: list = []
+        self.report_path: str = ""
 
     @staticmethod
     def test_vuln_scan_func(target: str, ports: str):
-        system(f"nmap -sV -p {ports} --script vulscan,vuln,vulners --script-args vulscandb=cve.csv {target}")
-
+        system(f"nmap -sV -p {ports} --script vulscan,vuln,vulners --script-args vulscandb=exploitdb.csv {target} -Pn")

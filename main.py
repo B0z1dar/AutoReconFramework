@@ -24,22 +24,20 @@ class UserValueChecker:
     pass
     
 """
-user_set_rate = "500"
-user_set_target = "192.168.0.1"
 
-new_config_masscan = config.MasScanConfig(masscan_rate=user_set_rate, masscan_target=user_set_rate)
+new_config_masscan = config.MasScanConfig(masscan_rate=user_set_rate, masscan_target=user_set_target)
 new_scan_masscan = scaner.MasScanStarter(user_config=new_config_masscan)
 
 new_scan_nmap = scaner.NmapStartScan()
 
 masscan_result_parser = masscan_parser.MasScanReportParser(report_path="test\\plesk.json")
 find_target = masscan_result_parser.json_get_clear_report()
-print(find_target)
+
+
 for i in find_target:
     i: dict
     target: str = i.get('ip')
     ports: str = ','.join([str(i) for i in i.get('ports')])
-    print(f"sc")
     new_scan_nmap.test_vuln_scan_func(target=target, ports=ports)
 
 

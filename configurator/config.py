@@ -25,3 +25,7 @@ class NmapConfig:
 
     def set_cve_db(self):
         pass
+
+    def set_report_path(self):
+        pass
+
