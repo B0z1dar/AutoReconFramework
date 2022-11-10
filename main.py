@@ -9,8 +9,7 @@ class ArgumentParser:
         self.user_arguments = argparse.ArgumentParser(description="Auto target vuln recon")
         self.masscan_rate = self.user_arguments.add_argument("--rate", help="Masscan scan speed rate")
         self.scan_target = self.user_arguments.add_argument("--target", help="Set target in formate "
-                                                                             "x.x.x.x or x.x.x.x-x.x.x.x or"
-                                                                             "x.x.x.x/x")
+                                                                             "x.x.x.x or x.x.x.x/x")
         # self.formate_test = self.user_arguments.add_argument("--web", help="It's set it flag") add in future
         self.arguments = self.user_arguments.parse_args()
 
@@ -25,7 +24,7 @@ class UserValueChecker:
     
 """
 
-new_config_masscan = config.MasScanConfig(masscan_rate=user_set_rate, masscan_target=user_set_target)
+new_config_masscan = config.MasScanConfig(masscan_rate="null", masscan_target="null")
 new_scan_masscan = scaner.MasScanStarter(user_config=new_config_masscan)
 
 new_scan_nmap = scaner.NmapStartScan()
